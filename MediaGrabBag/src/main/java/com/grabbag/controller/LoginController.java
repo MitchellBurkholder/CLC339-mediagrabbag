@@ -1,8 +1,5 @@
 package com.grabbag.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grabbag.model.LoginModel;
-//import com.gcu.model.OrderModel;
-import com.grabbag.model.*;
 
 @Controller
 @RequestMapping("/mediagrabbag.com/login")
@@ -26,15 +21,8 @@ public class LoginController {
 	}
 	
 	//@PostMapping("/doLogin")
-	public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
+	/*public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
+	
 		
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("title", "Login Form");
-			return "login";
-		}
-		  
-		// TODO: insert code for what to do when login is successful
-		return "orders";
-		
-	}
+	}*/
 }
