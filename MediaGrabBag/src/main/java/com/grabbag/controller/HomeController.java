@@ -13,4 +13,10 @@ public class HomeController
     {
         return "home";
     }
+
+    @GetMapping("/placeholder/")
+    public String showPlaceholder()
+    {
+        return "placeholder";
+    }
 }
