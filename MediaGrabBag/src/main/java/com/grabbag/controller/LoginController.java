@@ -20,9 +20,9 @@ public class LoginController {
 		return "login";
 	}
 	
-	//@PostMapping("/doLogin")
-	/*public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
+	@PostMapping("/doLogin")
+	public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
 	
 		
-	}*/
+	}
 }
