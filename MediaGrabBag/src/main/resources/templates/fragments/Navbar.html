@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Navbar</title>
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav th:fragment="navbar">
   <div class="container-fluid">
     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
       <ul>
-        <li><a class="nav-brand" th:href="@{/}">Home</a></li>
+        <li><a class="nav-brand" th:href="@{/}">MediaGrabBag</a></li>
         <div class="nav-product">
-          <li><a th:href="@{/placeholder/}">Books</a></li>
-          <li><a th:href="@{/placeholder/}">TV/Movies</a></li>
-          <li><a th:href="@{/placeholder/}">Video Games</a></li>
+          <li><a th:href="@{/placeholder/}">BOOKS</a></li>
+          <li><a th:href="@{/placeholder/}">TV/MOVIES</a></li>
+          <li><a th:href="@{/placeholder/}">VIDEO GAMES</a></li>
         </div>
         <div class="nav-login">
           <li><a th:href="@{/mediagrabbag.com/login/}">Login</a></li>
