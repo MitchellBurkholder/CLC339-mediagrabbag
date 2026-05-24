@@ -11,7 +11,8 @@ ul
 
 nav
 {
-    border: thin solid #b2d8e8;
+    list-style: none;
+    /*border: thin solid #b2d8e8;*/
 }
 
 .nav-brand, .nav-product, .nav-login
