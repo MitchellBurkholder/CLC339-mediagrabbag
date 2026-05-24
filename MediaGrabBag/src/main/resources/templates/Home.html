@@ -3,47 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" th:href="@{/navbar.css}" />
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <header class="container-fluid"></header>
-        <div class="container-fluid">
-            <a th:href="@{/}">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-<!--                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>-->
-                        <!--NAV ITEM FOR BOOKS-->
-                        <a th:href="@{/placeholder/}">Books</a>
-                    </li>
-                    <li class="nav-item">
-<!--                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>-->
-                        <!--NAV ITEM FOR TV/MOVIES-->
-                        <a th:href="@{/placeholder/}">TV/Movies</a>
-                    </li>
-                    <li class="nav-item">
-<!--                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>-->
-                        <!--NAV ITEM FOR VIDEO GAMES-->
-                        <a th:href="@{/placeholder/}">Video Games</a>
-                    </li>
-                    <li class="nav-item">
-<!--                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ShowOne">First Product</a>-->
-                        <!--NAV ITEM FOR LOGIN-->
-                        <a th:href="@{/mediagrabbag.com/login/}">Login</a>
-                    </li>
-                    <li class="nav-item">
-<!--                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ShowAll">All Products</a>-->
-                        <!--NAV ITEM FOR REGISTRATION-->
-                        <a th:href="@{/}">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <body>
+    <div th:replace="fragments/Navbar :: navbar"></div>
+
+
+    </body>
 </header>
 </html>
