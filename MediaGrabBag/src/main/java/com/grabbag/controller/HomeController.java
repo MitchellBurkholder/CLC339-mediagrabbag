@@ -21,4 +21,10 @@ public class HomeController
     {
         return "Placeholder";
     }
+
+    @GetMapping("/register/")
+    public String showRegistration()
+    {
+        return "Registration";
+    }
 }
