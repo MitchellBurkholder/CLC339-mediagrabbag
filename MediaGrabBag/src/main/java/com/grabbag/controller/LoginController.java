@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.grabbag.model.LoginModel;
 
 @Controller
-@RequestMapping("/mediagrabbag.com/login")
+@RequestMapping("/login")
 public class LoginController {
 	
 	@GetMapping("/")
@@ -20,8 +20,13 @@ public class LoginController {
 		return "login";
 	}
 	
-	@PostMapping("/loginSuccess")
+	@PostMapping("/doLogin")
 	public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("title", "Login Form");
+			return "login";
+		}
 			return "home";
 	}
 }
