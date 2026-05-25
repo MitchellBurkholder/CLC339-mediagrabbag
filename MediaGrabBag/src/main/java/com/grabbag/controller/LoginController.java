@@ -20,16 +20,17 @@ public class LoginController {
 	public String display(Model model) {
 		model.addAttribute("title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
-		return "login";
+		return "Login";
 	}
 	
+	// process login info, the valid & modelAttribute annotations ensure the errors messages appear
 	@PostMapping("/doLogin")
 	public String doLogin(@Valid @ModelAttribute LoginModel loginModel, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Login Form");
-			return "login";
+			return "Login";
 		}
-			return "redirect:/home";
+			return "redirect:/";
 	}
 }

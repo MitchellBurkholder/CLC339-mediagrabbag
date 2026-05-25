@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form th:action="@{/register}" th:object="${user}" method="post">
+                    <form action="#" th:action="@{doRegistration}" th:object="${registrationModel}" method="post">
 
                         <div class="mb-3">
                             <label class="form-label">First Name</label>
@@ -36,12 +36,12 @@
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" th:field="*{email}" class="form-control" required>
+                            <input type="text" th:field="*{email}" class="form-control" required>
                         </div>
 						
 						<div class="mb-3">
 							<label class="form-label">Phone Number</label>
-							<input type="email" th:field="*{phoneNumber}" class="form-control" required>
+							<input type="text" th:field="*{phoneNumber}" class="form-control" required>
 						</div>
 
                         <div class="mb-3">
@@ -51,7 +51,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" th:field="*{password}" class="form-control" required>
+                            <input type="text" th:field="*{password}" class="form-control" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Register</button>
@@ -62,7 +62,7 @@
                 <div class="card-footer text-center">
                     <small>
                         Already have an account?
-                        <a th:href="@{/login}">Login here</a>
+                        <a th:href="@{/login/}">Login here</a>
                     </small>
                 </div>
             </div>

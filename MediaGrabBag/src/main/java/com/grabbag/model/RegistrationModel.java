@@ -41,11 +41,11 @@ public class RegistrationModel {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getEmailAddress() {
+	public String getEmail() {
 		return email;
 	}
-	public void setEmailAddress(String emailAddress) {
-		this.email = emailAddress;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
