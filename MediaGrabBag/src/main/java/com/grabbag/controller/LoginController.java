@@ -4,10 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grabbag.model.LoginModel;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/login")
@@ -21,12 +24,12 @@ public class LoginController {
 	}
 	
 	@PostMapping("/doLogin")
-	public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
+	public String doLogin(@Valid @ModelAttribute LoginModel loginModel, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
-			return "home";
+			return "redirect:/home";
 	}
 }
