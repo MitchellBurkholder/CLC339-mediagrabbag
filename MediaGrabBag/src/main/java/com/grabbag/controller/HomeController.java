@@ -14,13 +14,13 @@ public class HomeController
         return "home";
     }
 
-    @GetMapping("/placeholder/")
+    @GetMapping("/placeholder")
     public String showPlaceholder()
     {
         return "placeholder";
     }
 
-    @GetMapping("/register/")
+    @GetMapping("/gotoregister")
     public String showRegistration()
     {
         return "Registration";

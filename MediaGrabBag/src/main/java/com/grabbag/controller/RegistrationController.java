@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.grabbag.model.RegistrationModel;
 
 @Controller
-@RequestMapping("/mediagrabbag.com/register")
+@RequestMapping("/register")
 public class RegistrationController {
 	
 	@GetMapping("/")
@@ -18,9 +18,8 @@ public class RegistrationController {
 		return "register";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/doRegistration")
 	public String completeRegistration(RegistrationModel registerModel, BindingResult bindingResult, Model model ) {
-		
 		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("title", "Registration Form");
