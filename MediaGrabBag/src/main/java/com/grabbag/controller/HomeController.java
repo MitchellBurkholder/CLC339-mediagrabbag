@@ -8,21 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController
 {
+	//maps the home page
     @GetMapping("/")
     public String showHome()
     {
-        return "home";
+        return "Home";
     }
 
+    //needed for placeholder page to appear 
     @GetMapping("/placeholder")
     public String showPlaceholder()
     {
-        return "placeholder";
-    }
-
-    @GetMapping("/gotoregister")
-    public String showRegistration()
-    {
-        return "Registration";
+        return "Placeholder";
     }
 }
