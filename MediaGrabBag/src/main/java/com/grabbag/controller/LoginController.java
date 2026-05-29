@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+	//@autowired
 	
 	@GetMapping("/")
 	public String display(Model model) {
