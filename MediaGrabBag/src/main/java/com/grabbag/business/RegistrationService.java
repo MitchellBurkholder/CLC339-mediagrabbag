@@ -1,7 +1,7 @@
 package com.grabbag.business;
 
 import org.springframework.stereotype.Service;
-import com.gcu.model.UserModel;
+import com.grabbag.model.UserModel;
 
 @Service
 public class RegistrationService implements RegistrationServiceInterface {
