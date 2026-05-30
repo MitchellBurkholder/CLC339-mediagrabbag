@@ -1,6 +1,6 @@
 package com.grabbag.business;
 
-import com.gcu.model.UserModel;
+import com.grabbag.model.UserModel;
 
 public interface RegistrationServiceInterface {
     public void registerUser(UserModel user);
