@@ -21,9 +21,6 @@ public class LoginController {
 	@Autowired
 	LoginInterface loginService;
 	
-	@Autowired
-	LoginInterface loginService;
-	
 	@GetMapping("/")
 	public String display(Model model) {
 		model.addAttribute("title", "Login Form");
