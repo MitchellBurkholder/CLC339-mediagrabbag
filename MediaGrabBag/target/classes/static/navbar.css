@@ -15,7 +15,7 @@ nav
     /*border: thin solid #b2d8e8;*/
 }
 
-.nav-brand, .nav-product, .nav-login
+.left, .nav-product, .nav-login
 {
     display: flex;
     gap: 1rem;
