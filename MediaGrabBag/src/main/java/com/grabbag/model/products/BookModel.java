@@ -7,13 +7,13 @@ public class BookModel extends ProductModel
 {
     @NotNull(message="Author is required field")
     @Size(min=1, max=64, message="Author's full name must be between 1 and 64 characters")
-    String Author;
+    String author;
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 }

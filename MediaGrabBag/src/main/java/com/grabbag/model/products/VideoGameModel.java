@@ -10,5 +10,21 @@ public class VideoGameModel extends ProductModel
     String numPlayers;
 
     @NotNull(message="Please input any required equipment (or N/A if nonapplicable")
-    ArrayList<String> RequiredEquipment;
+    String requiredEquipment;
+
+    public String getNumPlayers() {
+        return numPlayers;
+    }
+
+    public void setNumPlayers(String numPlayers) {
+        this.numPlayers = numPlayers;
+    }
+
+    public String getRequiredEquipment() {
+        return requiredEquipment;
+    }
+
+    public void setRequiredEquipment(String requiredEquipment) {
+        this.requiredEquipment = requiredEquipment;
+    }
 }

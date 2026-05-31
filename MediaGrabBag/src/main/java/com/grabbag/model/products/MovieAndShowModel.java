@@ -6,13 +6,13 @@ import jakarta.validation.constraints.Size;
 public class MovieAndShowModel extends ProductModel
 {
     @NotNull(message="Duration in Hours is a required field")
-    int DurationInHours;
+    int durationInHours;
 
     public int getDurationInHours() {
         return DurationInHours;
     }
 
     public void setDurationInHours(int durationInHours) {
-        DurationInHours = durationInHours;
+        this.durationInHours = durationInHours;
     }
 }
