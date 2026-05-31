@@ -1,4 +1,4 @@
-package com.grabbag.model.product;
+package com.grabbag.model.products;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

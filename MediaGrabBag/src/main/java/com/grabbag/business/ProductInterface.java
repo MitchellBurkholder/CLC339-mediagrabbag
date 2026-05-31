@@ -1,8 +1,8 @@
 package com.grabbag.business;
 
-import com.grabbag.model.products*;
+import com.grabbag.model.products.ProductModel;
 
-public interface ProductsInterface
+public interface ProductInterface
 {
     public void addProduct(ProductModel product);
 }

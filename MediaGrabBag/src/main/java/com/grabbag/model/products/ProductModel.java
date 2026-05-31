@@ -1,20 +1,12 @@
-package com.grabbag.model.product;
+package com.grabbag.model.products;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-enum Type
-{
-    Book,
-    MovieOrShow
-    VideoGame
-}
-
-public abstract class ProductModel
+public class ProductModel
 {
     @NotNull(message="Type is required field")
-    @Size(min=1, max=12, message="Type must be Book, MovieOrShow, or VideoGame")
-    Type type;
+    ProductType type;
 
     //Can be null; just assigned after product is created
     int id;
@@ -38,10 +30,11 @@ public abstract class ProductModel
     @Size(min=1, max=32, message="Name of publisher or studio must be less than 32 characters")
     String publisherOrStudio;
 
-    public com.grabbag.model.product.Type getType() {
+    public ProductType getType() {
         return type;
     }
-    public void setType(com.grabbag.model.product.Type type) {
+
+    public void setType(ProductType type) {
         this.type = type;
     }
 

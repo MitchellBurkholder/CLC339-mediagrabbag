@@ -1,7 +1,6 @@
-package com.grabbag.model.product;
+package com.grabbag.model.products;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 public class MovieAndShowModel extends ProductModel
 {
@@ -9,7 +8,7 @@ public class MovieAndShowModel extends ProductModel
     int durationInHours;
 
     public int getDurationInHours() {
-        return DurationInHours;
+        return durationInHours;
     }
 
     public void setDurationInHours(int durationInHours) {
