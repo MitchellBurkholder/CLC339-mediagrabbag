@@ -40,6 +40,6 @@ public class ProductController
             return "AddProduct";
         }
         productService.addProduct(productModel);
-        return "redirect:/home/";
+        return "redirect:/";
     }
 }
