@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.grabbag.model.RegistrationModel;
 
 @Service
-public class RegistrationService implements RegistrationServiceInterface {
+public class RegistrationService implements com.grabbag.business.RegistrationServiceInterface {
 
     @Override
     public void registerUser(RegistrationModel user) {

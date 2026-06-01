@@ -2,8 +2,9 @@ package com.gcu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import com.grabbag.MediaGrabBagApplication;
 
-@SpringBootTest
+@SpringBootTest(classes = MediaGrabBagApplication.class)
 class MediaGrabBagApplicationTests {
 
 	@Test
