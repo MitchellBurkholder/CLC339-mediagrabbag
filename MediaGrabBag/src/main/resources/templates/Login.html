@@ -20,6 +20,10 @@
 								</div>
 							</tr>
 						</table>
+						<div th:if="${#fields.hasErrors('global')}">
+						    <h3>Global errors:</h3>
+						    <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+						</div>
 						<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
 						<div th:each="err : ${#fields.errors('*')}">
 							<span style="color:red" th:text="${err}" class="fieldError"></span>

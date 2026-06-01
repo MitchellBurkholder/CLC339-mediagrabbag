@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,13 @@ public class LoginController {
 	public String doLogin(@Valid @ModelAttribute LoginModel loginModel, BindingResult bindingResult, Model model) {
 		
 		if(!loginService.authenticate(loginModel.getUsername(), loginModel.getPassword())) {
+			
+			String msg = "incorrect login, try again";
+			ObjectError error = new ObjectError("globalError", msg);
+			
+			bindingResult.addError(error);
 			model.addAttribute("title", "Login Form");
+			
 			return "Login";
 		}
 		if(bindingResult.hasErrors()) {
