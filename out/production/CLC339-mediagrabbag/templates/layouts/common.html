@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<body>
+		<div th:fragment="header">
+			<nav th:fragment="navbar">
+				<div class="container-fluid">
+					<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+						<ul>
+							<li><a class="nav-brand" th:href="@{/}">MediaGrabBag</a></li>
+							<div class="nav-product">
+								<li><a th:href="@{/placeholder}">BOOKS</a></li>
+								<li><a th:href="@{/placeholder}">TV/MOVIES</a></li>
+								<li><a th:href="@{/placeholder}">VIDEO GAMES</a></li>
+							</div>
+							<div class="nav-login">
+								<li><a th:href="@{/login/}">Login</a></li>
+								<li><a th:href="@{/register/}">Register</a></li>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<h2 th:text="${title}">Default Message Text</h2><br/>
+		</div>
+			
+		<div th:fragment="footer">
+			<!--This is need for some reason-->
+		</div>
+	</body>
+</html>
