@@ -18,6 +18,7 @@ import jakarta.validation.Valid;
 public class RegistrationController {
 
     private final RegistrationServiceInterface registrationService;
+    registrationService.registerUser(registrationModel);
 
     public RegistrationController(RegistrationServiceInterface registrationService) {
         this.registrationService = registrationService;
