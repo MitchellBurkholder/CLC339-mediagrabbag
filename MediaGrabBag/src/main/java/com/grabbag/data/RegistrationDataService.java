@@ -17,7 +17,7 @@ public class RegistrationDataService implements RegistrationDataServiceInterface
     @Override
     public int createUser(RegistrationModel registrationModel) {
         String sql = """
-            INSERT INTO users
+            INSERT INTO registerinfo
             (first_name, last_name, email, phone_number, username, password)
             VALUES (?, ?, ?, ?, ?, ?)
             """;
