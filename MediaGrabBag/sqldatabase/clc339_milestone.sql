@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 06, 2026 at 03:29 PM
+-- Generation Time: Jun 08, 2026 at 02:57 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -43,6 +43,29 @@ INSERT INTO `logininfo` (`ID`, `USERNAME`, `PASSWORD`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `productinfo`
+--
+
+CREATE TABLE `productinfo` (
+  `ID` int(11) NOT NULL,
+  `TYPE` varchar(15) NOT NULL,
+  `TITLE` varchar(200) NOT NULL,
+  `AGE_RATING` varchar(7) NOT NULL,
+  `GENRE` varchar(32) NOT NULL,
+  `DATE` varchar(13) NOT NULL,
+  `PUBLISHER_OR_STUDIO` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `productinfo`
+--
+
+INSERT INTO `productinfo` (`ID`, `TYPE`, `TITLE`, `AGE_RATING`, `GENRE`, `DATE`, `PUBLISHER_OR_STUDIO`) VALUES
+(1, 'Book', 'Murder on the Orient Express', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `registerinfo`
 --
 
@@ -67,6 +90,12 @@ ALTER TABLE `logininfo`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `productinfo`
+--
+ALTER TABLE `productinfo`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `registerinfo`
 --
 ALTER TABLE `registerinfo`
@@ -80,6 +109,12 @@ ALTER TABLE `registerinfo`
 -- AUTO_INCREMENT for table `logininfo`
 --
 ALTER TABLE `logininfo`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `productinfo`
+--
+ALTER TABLE `productinfo`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

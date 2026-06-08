@@ -24,7 +24,7 @@ public class ProductDataService implements ProductDataInterface
     @Override
     public List<ProductModel> findAll() {
 
-        String sql = "SELECT * FROM PRODUCTS";
+        String sql = "SELECT * FROM productinfo";
         List<ProductModel> products = new ArrayList<ProductModel>();
         try
         {
@@ -57,13 +57,12 @@ public class ProductDataService implements ProductDataInterface
     public int create(ProductModel product) {
         String sql =
         """
-        INSERT INTO PRODUCTS 
-        (TYPE, TITLE, AGE_RATING, GENRE, DATE, PUBLISHER_OR_STUDIO) 
+        INSERT INTO productinfo
+        (TYPE, TITLE, AGE_RATING, GENRE, DATE, PUBLISHER_OR_STUDIO)
         VALUES (?, ?, ?, ?, ?, ?)
         """;
-
         return jdbcTemplate.update(sql,
-                product.getType(),
+                product.getType().toString(),
                 product.getTitle(),
                 product.getAgeRating(),
                 product.getGenre(),

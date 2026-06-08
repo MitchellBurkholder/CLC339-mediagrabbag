@@ -20,6 +20,13 @@ public class ProductController
     @Autowired
     ProductDataInterface productService;
 
+    @GetMapping("/allProducts")
+    public String allProducts(Model model)
+    {
+        model.addAttribute("products", productService.findAll());
+        return "Products";
+    }
+
     @GetMapping("/addProduct")
     public String addProductForm(Model model)
     {
@@ -40,6 +47,16 @@ public class ProductController
             return "AddProduct";
         }
         productService.create(productModel);
-        return "redirect:/";
+        switch(productModel.getType())
+        {
+            case Book:
+                return allProducts(model);
+            case MovieOrShow:
+                return "redirect:/";
+            case VideoGame:
+                return "redirect:/Placeholder";
+            default:
+                return "redirect:/";
+        }
     }
 }
