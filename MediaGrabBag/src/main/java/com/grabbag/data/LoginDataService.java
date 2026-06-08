@@ -7,15 +7,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import com.grabbag.data.repo.LoginRepo;
 import com.grabbag.model.LoginModel;
 
 @Service
-public class LoginDataService implements DataAccessInterface<LoginModel>{
+public class LoginDataService implements LoginDataInterface<LoginModel>{
 	
 	@Autowired
-	private LoginRepo loginRepo;
-	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 	
 	public LoginDataService(DataSource dataSource) {
@@ -41,14 +38,17 @@ public class LoginDataService implements DataAccessInterface<LoginModel>{
 	
 	public boolean CheckCredentials(String username, String password) {
 		
+		// query made, will change later
+		String sql = "SELECT COUNT(1) FROM logininfo WHERE USERNAME = ? AND PASSWORD = ?";
 		
-		String sql = "SELECT * FROM logininfo WHERE USERNAME = ? AND PASSWORD = ?";
-		
-		
+		//increments the count if the password & username is in the database
 		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, username, password);
 		
+		if(count != null && count > 0) {
+			return true;
+		}
 		
-		return (count != null || count > 0);
+		return false;
 	}
 	
 	
