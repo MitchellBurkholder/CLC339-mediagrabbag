@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 08, 2026 at 02:57 AM
+-- Generation Time: Jun 08, 2026 at 04:05 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -61,7 +61,8 @@ CREATE TABLE `productinfo` (
 --
 
 INSERT INTO `productinfo` (`ID`, `TYPE`, `TITLE`, `AGE_RATING`, `GENRE`, `DATE`, `PUBLISHER_OR_STUDIO`) VALUES
-(1, 'Book', 'Murder on the Orient Express', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club');
+(1, 'Book', 'Murder on the Orient Express', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club'),
+(2, 'MovieOrShow', 'Project Hail Mary', 'PG-13', 'Sci-Fi', '03-20-2026', 'Amazon MGM');
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,7 @@ ALTER TABLE `logininfo`
 -- AUTO_INCREMENT for table `productinfo`
 --
 ALTER TABLE `productinfo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `registerinfo`
