@@ -11,15 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProductDataService implements DataAccessInterface<ProductModel>
+public class ProductDataService implements ProductDataInterface
 {
     @Autowired
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
     public ProductDataService(DataSource dataSource)
     {
-        this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -43,10 +41,10 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
                         srs.getString("PUBLISHER_OR_STUDIO")));
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
+
         return products;
     }
 
@@ -56,34 +54,30 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
     }
 
     @Override
-    public boolean create(ProductModel product) {
-        String sql = "INSERT INTO PRODUCTS (TYPE, TITLE, AGE_RATING, GENRE, DATE, PUBLISHER_OR_STUDIO) VALUES (?, ?, ?, ?, ?, ?)";
-        try
-        {
-            int rows = jdbcTemplate.update(sql,
-                    product.getType(),
-                    product.getTitle(),
-                    product.getAgeRating(),
-                    product.getGenre(),
-                    product.getDate(),
-                    product.getPublisherOrStudio()
-            );
-            return rows == 1 ? true : false;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return false;
+    public int create(ProductModel product) {
+        String sql =
+        """
+        INSERT INTO PRODUCTS 
+        (TYPE, TITLE, AGE_RATING, GENRE, DATE, PUBLISHER_OR_STUDIO) 
+        VALUES (?, ?, ?, ?, ?, ?)
+        """;
+
+        return jdbcTemplate.update(sql,
+                product.getType(),
+                product.getTitle(),
+                product.getAgeRating(),
+                product.getGenre(),
+                product.getDate(),
+                product.getPublisherOrStudio()
+        );
     }
 
     @Override
-    public boolean update(ProductModel productModel) {
-        return false;
+    public int update(ProductModel productModel) {
+        return 0;
     }
 
     @Override
-    public boolean delete(ProductModel productModel) {
-        return false;
+    public void delete(ProductModel productModel) {
     }
 }

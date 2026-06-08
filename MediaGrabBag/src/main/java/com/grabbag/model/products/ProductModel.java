@@ -17,6 +17,7 @@ public class ProductModel
     ProductType type;
 
     @NotNull(message="Title is required field")
+    @Column("TITLE")
     String title;
 
     @NotNull(message="Age Rating is required field")

@@ -1,6 +1,7 @@
 package com.grabbag.controller;
 
 import com.grabbag.business.ProductInterface;
+import com.grabbag.data.ProductDataInterface;
 import com.grabbag.model.products.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import jakarta.validation.Valid;
 public class ProductController
 {
     @Autowired
-    ProductInterface productService;
+    ProductDataInterface productService;
 
     @GetMapping("/addProduct")
     public String addProductForm(Model model)
