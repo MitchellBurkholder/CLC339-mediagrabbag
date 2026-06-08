@@ -2,7 +2,9 @@ package com.grabbag.business;
 
 import com.grabbag.model.products.ProductModel;
 
+import java.util.ArrayList;
+
 public interface ProductInterface
 {
-    public void addProduct(ProductModel product);
+    public void create(ProductModel product);
 }

@@ -1,6 +1,8 @@
 package com.grabbag.controller;
 
+import com.grabbag.business.ProductInterface;
 import com.grabbag.model.products.ProductModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,11 +16,8 @@ import jakarta.validation.Valid;
 @RequestMapping("/product")
 public class ProductController
 {
-    com.grabbag.business.ProductService productService;
-    public ProductController()
-    {
-        productService = new com.grabbag.business.ProductService();
-    }
+    @Autowired
+    ProductInterface productService;
 
     @GetMapping("/addProduct")
     public String addProductForm(Model model)
@@ -39,7 +38,7 @@ public class ProductController
             model.addAttribute("title", "Add Product Form");
             return "AddProduct";
         }
-        productService.addProduct(productModel);
+        productService.create(productModel);
         return "redirect:/";
     }
 }
