@@ -73,10 +73,30 @@ public class ProductDataService implements ProductDataInterface
 
     @Override
     public int update(ProductModel productModel) {
-        return 0;
+    	
+    	String sql =
+    	        """
+    	        UPDATE productinfo SET TYPE = ?, TITLE = ?, AGE_RATING = ?, GENRE = ?, DATE = ?, PUBLISHER_OR_STUDIO = ?
+    	        WHERE ID = ?
+    	        """;
+    	        return jdbcTemplate.update(sql,
+    	        		productModel.getId(),
+    	                productModel.getType().toString(),
+    	                productModel.getTitle(),
+    	                productModel.getAgeRating(),
+    	                productModel.getGenre(),
+    	                productModel.getDate(),
+    	                productModel.getPublisherOrStudio()
+    	        );
     }
 
     @Override
     public void delete(ProductModel productModel) {
+    	String sql = """
+    				DELETE FROM productinfo WHERE ID = ?
+    			""";
+    	
+    	jdbcTemplate.update(sql, productModel.getId());
+    	
     }
 }

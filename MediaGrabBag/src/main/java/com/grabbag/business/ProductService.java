@@ -18,4 +18,16 @@ public class ProductService implements com.grabbag.business.ProductInterface
     {
         System.out.println("Adding product " + product.getTitle());
     }
+
+	@Override
+	public void update(ProductModel product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(ProductModel product) {
+		// TODO Auto-generated method stub
+		
+	}
 }
