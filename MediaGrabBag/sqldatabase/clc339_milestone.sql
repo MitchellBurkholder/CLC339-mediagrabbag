@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 08, 2026 at 04:05 AM
+-- Generation Time: Jun 15, 2026 at 01:52 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -38,7 +38,8 @@ CREATE TABLE `logininfo` (
 --
 
 INSERT INTO `logininfo` (`ID`, `USERNAME`, `PASSWORD`) VALUES
-(1, 'admin', '123');
+(1, 'admin', '123'),
+(2, 'test123', 'test');
 
 -- --------------------------------------------------------
 
@@ -50,6 +51,10 @@ CREATE TABLE `productinfo` (
   `ID` int(11) NOT NULL,
   `TYPE` varchar(15) NOT NULL,
   `TITLE` varchar(200) NOT NULL,
+  `AUTHOR` varchar(50) NOT NULL,
+  `DURATION` int(7) NOT NULL,
+  `NUM_PLAYERS` varchar(15) NOT NULL,
+  `REQUIRED_EQUIPMENT` varchar(30) NOT NULL,
   `AGE_RATING` varchar(7) NOT NULL,
   `GENRE` varchar(32) NOT NULL,
   `DATE` varchar(13) NOT NULL,
@@ -60,9 +65,9 @@ CREATE TABLE `productinfo` (
 -- Dumping data for table `productinfo`
 --
 
-INSERT INTO `productinfo` (`ID`, `TYPE`, `TITLE`, `AGE_RATING`, `GENRE`, `DATE`, `PUBLISHER_OR_STUDIO`) VALUES
-(1, 'Book', 'Murder on the Orient Express', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club'),
-(2, 'MovieOrShow', 'Project Hail Mary', 'PG-13', 'Sci-Fi', '03-20-2026', 'Amazon MGM');
+INSERT INTO `productinfo` (`ID`, `TYPE`, `TITLE`, `AUTHOR`, `DURATION`, `NUM_PLAYERS`, `REQUIRED_EQUIPMENT`, `AGE_RATING`, `GENRE`, `DATE`, `PUBLISHER_OR_STUDIO`) VALUES
+(1, 'Book', 'Murder on the Orient Express', '', 0, '', '', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club'),
+(2, 'MovieOrShow', 'Project Hail Mary', '', 0, '', '', 'PG-13', 'Sci-Fi', '03-20-2026', 'Amazon MGM');
 
 -- --------------------------------------------------------
 
@@ -79,6 +84,13 @@ CREATE TABLE `registerinfo` (
   `USERNAME` varchar(32) NOT NULL,
   `PASSWORD` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `registerinfo`
+--
+
+INSERT INTO `registerinfo` (`ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `USERNAME`, `PASSWORD`) VALUES
+(1, 'Tess', 'TEst', 'testing@gmail.com', '2183335467', 'test123', 'test');
 
 --
 -- Indexes for dumped tables
@@ -110,19 +122,19 @@ ALTER TABLE `registerinfo`
 -- AUTO_INCREMENT for table `logininfo`
 --
 ALTER TABLE `logininfo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `productinfo`
 --
 ALTER TABLE `productinfo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `registerinfo`
 --
 ALTER TABLE `registerinfo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

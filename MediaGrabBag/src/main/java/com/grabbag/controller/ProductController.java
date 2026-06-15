@@ -2,15 +2,13 @@ package com.grabbag.controller;
 
 import com.grabbag.business.ProductInterface;
 import com.grabbag.data.ProductDataInterface;
+import com.grabbag.model.products.AnyProductModel;
 import com.grabbag.model.products.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 @Controller
@@ -46,14 +44,17 @@ public class ProductController
             model.addAttribute("title", "Add Product Form");
             return "AddProduct";
         }
-        productService.create(productModel);
+
         switch(productModel.getType())
         {
             case Book:
+                productService.create(productModel);
                 return allProducts(model);
             case MovieOrShow:
+                productService.create(productModel);
                 return "redirect:/";
             case VideoGame:
+                productService.create(productModel);
                 return "redirect:/Placeholder";
             default:
                 return "redirect:/";
@@ -100,4 +101,6 @@ public class ProductController
 
         return "redirect:/product/allProducts";
     }
+
+
 }

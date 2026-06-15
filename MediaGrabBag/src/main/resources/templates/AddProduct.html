@@ -23,6 +23,32 @@
                 <td>Title:</td><td><input type="text" th:field="*{title}"></td>
                 <td><h5 style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</h5></td>
             </tr>
+                        <div th:switch="${type}">
+                            <tr th:case="'Book'">
+                                <td>Author:</td><td><input type="text" th:field="*{author}"></td>
+                                <td><h5 style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">
+                                    Author Name Error</h5></td>
+                            </tr>
+
+                            <tr th:case="'MovieOrShow'">
+                                <td>Duration in Hours:</td><td><input type="number" th:field="*{durationInHours}"></td>
+                                <td><h5 style="color:red" th:if="${#fields.hasErrors('durationInHours')}" th:errors="*{durationInHours}">
+                                    Duration Error</h5></td>
+                            </tr>
+
+                            <tr th:case="'VideoGame'">
+                                <td>Amount of Players:</td><td><input type="text" th:field="*{numPlayers}"></td>
+                                <td><h5 style="color:red" th:if="${#fields.hasErrors('numPlayers')}" th:errors="*{numPlayers}">
+                                    Number of Players Error</h5></td>
+                            </tr>
+                            <tr th:case="'VideoGame'">
+                                <td>Required Equipment:</td><td><input type="text" th:field="*{requiredEquipment}"></td>
+                                <td><h5 style="color:red" th:if="${#fields.hasErrors('requiredEquipment')}" th:errors="*{requiredEquipment}">
+                                    Required Equipment Error</h5></td>
+                            </tr>
+
+                            <p th:case="*">Unknown Product.</p> <!-- default case -->
+                        </div>
             <tr>
                 <td>Age Rating:</td><td><input type="text" th:field="*{ageRating}" ></td>
                 <td><h5 style="color:red" th:if="${#fields.hasErrors('ageRating')}" th:errors="*{ageRating}">Age Rating Error</h5></td>
@@ -56,30 +82,3 @@
 </div>
 </body>
 </html>
-
-<!--            <div th:switch="${type}">-->
-<!--                <tr th:case="'Book'">-->
-<!--                    <td>Author:</td><td><input type="text" th:field="*{author}"></td>-->
-<!--                    <td><h5 style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">-->
-<!--                        Author Name Error</h5></td>-->
-<!--                </tr>-->
-
-<!--                <tr th:case="'MovieOrShow'">-->
-<!--                    <td>Duration in Hours:</td><td><input type="number" th:field="*{durationInHours}"></td>-->
-<!--                    <td><h5 style="color:red" th:if="${#fields.hasErrors('durationInHours')}" th:errors="*{durationInHours}">-->
-<!--                        Duration Error</h5></td>-->
-<!--                </tr>-->
-
-<!--                <tr th:case="'VideoGame'">-->
-<!--                    <td>Amount of Players:</td><td><input type="text" th:field="*{numPlayers}"></td>-->
-<!--                    <td><h5 style="color:red" th:if="${#fields.hasErrors('numPlayers')}" th:errors="*{numPlayers}">-->
-<!--                        Number of Players Error</h5></td>-->
-<!--                </tr>-->
-<!--                <tr th:case="'VideoGame'">-->
-<!--                    <td>Required Equipment:</td><td><input type="text" th:field="*{requiredEquipment}"></td>-->
-<!--                    <td><h5 style="color:red" th:if="${#fields.hasErrors('requiredEquipment')}" th:errors="*{requiredEquipment}">-->
-<!--                        Required Equipment Error</h5></td>-->
-<!--                </tr>-->
-
-<!--                <p th:case="*">Unknown Product.</p> &lt;!&ndash; default case &ndash;&gt;-->
-<!--            </div>-->

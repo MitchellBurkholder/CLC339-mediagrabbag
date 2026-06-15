@@ -1,10 +1,11 @@
 package com.grabbag.model.products;
 
 import jakarta.validation.constraints.NotNull;
+import org.springframework.data.relational.core.mapping.Column;
 
 public class MovieAndShowModel extends ProductModel
 {
-    @NotNull(message="Duration in Hours is a required field")
+    @Column("DURATION")
     int durationInHours;
 
     public int getDurationInHours() {
