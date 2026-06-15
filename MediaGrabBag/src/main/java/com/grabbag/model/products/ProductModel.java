@@ -54,7 +54,18 @@ public class ProductModel
     String publisherOrStudio;
     public ProductModel() {}
 
-    public ProductModel(int id, @Nullable String type, @Nullable String title, @Nullable String author, int duration, @Nullable String numPlayers, @Nullable String requiredEquipment, @Nullable String ageRating, @Nullable String genre, @Nullable String date, @Nullable String publisherOrStudio) {
+    public ProductModel(int id, String type, String title, @Nullable String author, int duration, @Nullable String numPlayers, @Nullable String requiredEquipment, String ageRating, String genre, String date, String publisherOrStudio) {
+        this.id = id;
+        this.type = ProductType.valueOf(type);
+        this.title = title;
+        this.author = author;
+        this.durationInHours = duration;
+        this.numPlayers = numPlayers;
+        this.requiredEquipment = requiredEquipment;
+        this.ageRating = ageRating;
+        this.genre = genre;
+        this.date = date;
+        this.publisherOrStudio = publisherOrStudio;
     }
 
     public ProductType getType() {

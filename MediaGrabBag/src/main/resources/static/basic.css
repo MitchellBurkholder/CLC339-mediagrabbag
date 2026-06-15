@@ -9,3 +9,11 @@ input, select
 {
     color: #1e3f3f !important;
 }
+
+.hover-text {
+    padding: 8px;
+    background-color: #b2d8e8;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}

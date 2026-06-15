@@ -1,8 +1,6 @@
 package com.grabbag.controller;
 
-import com.grabbag.business.ProductInterface;
 import com.grabbag.data.ProductDataInterface;
-import com.grabbag.model.products.AnyProductModel;
 import com.grabbag.model.products.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,6 +99,4 @@ public class ProductController
 
         return "redirect:/product/allProducts";
     }
-
-
 }
