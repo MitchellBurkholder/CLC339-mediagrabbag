@@ -59,4 +59,45 @@ public class ProductController
                 return "redirect:/";
         }
     }
+
+    @GetMapping("/editProduct/{id}")
+    public String editProductForm(@PathVariable int id, Model model)
+    {
+        ProductModel product = productService.findById(id);
+
+        model.addAttribute("title", "Edit Product Form");
+        model.addAttribute("productModel", product);
+
+        return "EditProduct";
+    }
+
+    @PostMapping("/doUpdateProduct")
+    public String updateProduct(
+        @Valid @ModelAttribute("productModel") ProductModel productModel,
+        BindingResult bindingResult,
+        Model model)
+    {
+        if(bindingResult.hasErrors())
+        {
+            model.addAttribute("title", "Edit Product Form");
+            return "EditProduct";
+        }
+
+        productService.update(productModel);
+
+        return "redirect:/product/allProducts";
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable int id)
+    {
+        ProductModel product = productService.findById(id);
+
+        if(product != null)
+        {
+            productService.delete(product);
+        }
+
+        return "redirect:/product/allProducts";
+    }
 }
