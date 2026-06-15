@@ -50,12 +50,12 @@ public class ProductController
                 return allProducts(model);
             case MovieOrShow:
                 productService.create(productModel);
-                return "redirect:/";
+                return allProducts(model);
             case VideoGame:
                 productService.create(productModel);
-                return "redirect:/Placeholder";
+                return allProducts(model);
             default:
-                return "redirect:/";
+                return allProducts(model);
         }
     }
 
@@ -81,9 +81,7 @@ public class ProductController
             model.addAttribute("title", "Edit Product Form");
             return "EditProduct";
         }
-
         productService.update(productModel);
-
         return "redirect:/product/allProducts";
     }
 

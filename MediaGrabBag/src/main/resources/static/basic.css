@@ -17,3 +17,14 @@ input, select
     display: inline-block;
     cursor: pointer;
 }
+
+table.display-products{
+    background-color: #b2d8e8;
+    color: #1e3f3f;
+    border: 2px solid #222427;
+}
+
+table.display-products td, table.display-products th {
+    padding: 8px;
+    border: 2px solid #222427;
+}
