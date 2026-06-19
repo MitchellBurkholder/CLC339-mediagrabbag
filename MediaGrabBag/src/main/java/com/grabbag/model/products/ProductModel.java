@@ -20,6 +20,19 @@ public class ProductModel
     @Column("TITLE")
     String title;
 
+    @Size(min=1, max=64, message="Author's full name must be between 1 and 64 characters")
+    @Column("AUTHOR")
+    String author;
+
+    @Column("DURATION")
+    int durationInHours;
+
+    @Column("NUM_PLAYERS")
+    String numPlayers;
+
+    @Column("REQUIRED_EQUIPMENT")
+    String requiredEquipment;
+
     @NotNull(message="Age Rating is required field")
     @Size(min=1, max=7, message="Not Rated can be abbrieviated to 'NR'")
     @Column("AGE_RATING")
@@ -39,11 +52,21 @@ public class ProductModel
     @Size(min=1, max=32, message="Name of publisher or studio must be less than 32 characters")
     @Column("PUBLISHER_OR_STUDIO")
     String publisherOrStudio;
-
-    public ProductModel(int id, @Nullable String type, @Nullable String title, @Nullable String ageRating,
-                        @Nullable String genre, @Nullable String date, @Nullable String publisherOrStudio) {}
-
     public ProductModel() {}
+
+    public ProductModel(int id, String type, String title, @Nullable String author, int duration, @Nullable String numPlayers, @Nullable String requiredEquipment, String ageRating, String genre, String date, String publisherOrStudio) {
+        this.id = id;
+        this.type = ProductType.valueOf(type);
+        this.title = title;
+        this.author = author;
+        this.durationInHours = duration;
+        this.numPlayers = numPlayers;
+        this.requiredEquipment = requiredEquipment;
+        this.ageRating = ageRating;
+        this.genre = genre;
+        this.date = date;
+        this.publisherOrStudio = publisherOrStudio;
+    }
 
     public ProductType getType() {
         return type;
@@ -68,6 +91,19 @@ public class ProductModel
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getAuthor() {return author;}
+    public void setAuthor(String author) {this.author = author;}
+
+    public int getDurationInHours() {return durationInHours;}
+    public void setDurationInHours(int durationInHours) {this.durationInHours = durationInHours;}
+
+    public String getNumPlayers() {return numPlayers;}
+    public void setNumPlayers(String numPlayers) {this.numPlayers = numPlayers;}
+
+    public String getRequiredEquipment() {return requiredEquipment;}
+    public void setRequiredEquipment(String requiredEquipment) {this.requiredEquipment = requiredEquipment;}
+
 
     public String getAgeRating() {
         return ageRating;

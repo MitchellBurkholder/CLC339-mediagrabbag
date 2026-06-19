@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="#" th:action="@{/product/doUpdateProduct}" th:object="${productModel}" method="post">
+        <table>
+            <tr>
+                <td>Type</td>
+                <td><input type="text" th:field="*{type}" readonly></td>
+            </tr>
+            <tr>
+                <td>Title</td><td><input type="text" th:field="*{title}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</h5></td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td><input type="text" th:field="*{author}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</h5></td>
+            </tr>
+            <tr>
+                <td>Duration</td><td><input type="text" th:field="*{durationInHours}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('durationInHours')}" th:errors="*{title}">Duration Error</h5></td>
+            </tr>
+            <tr>
+                <td>Number of Players</td><td><input type="text" th:field="*{numPlayers}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('numPlayers')}" th:errors="*{numPlayers}">Number of Players Error</h5></td>
+            </tr>
+            <tr>
+                <td>Required Equipment</td><td><input type="text" th:field="*{requiredEquipment}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('requiredEquipment')}" th:errors="*{requiredEquipment}">Equipment Error</h5></td>
+            </tr>
+            <tr>
+                <td>Age Rating</td><td><input type="text" th:field="*{ageRating}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('ageRating')}" th:errors="*{ageRating}">Age Rating Error</h5></td>
+            </tr>
+            <tr>
+                <td>Main Genre</td><td><input type="text" th:field="*{genre}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}">Genre Error</h5></td>
+            </tr>
+            <tr>
+                <td>Date</td><td><input type="text" th:field="*{date}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</h5></td>
+            </tr>
+            <tr>
+                <td>Publisher/Studio</td><td><input type="text" th:field="*{publisherOrStudio}"></td>
+                <td><h5 style="color:red" th:if="${#fields.hasErrors('publisherOrStudio')}" th:errors="*{publisherOrStudio}">
+                    Publisher or Studio Error</h5></td>
+            </tr>
+            <tr>
+                <div class="submitButton">
+                    <td colspan="3" style="text-align:center;">
+                        <input type="submit" value="Update Product">
+                    </td>
+                </div>
+            </tr>
+        </table>
+        <div th:if="${#fields.hasErrors('global')}">
+            <h3>Global errors:</h3>
+            <p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error"/>
+        </div>
+        <div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+        <div th:each="err : ${#fields.errors('*')}">
+            <span style="color:red" th:text="${err}" class="fieldError"></span>
+        </div>
+    </form>
+</div>
+</body>
+</body>
+</html>

@@ -12,7 +12,7 @@ public class HomeController
     @GetMapping("/")
     public String showHome()
     {
-        return "Home";
+        return "redirect:/product/allProducts";
     }
 
     //needed for placeholder page to appear 

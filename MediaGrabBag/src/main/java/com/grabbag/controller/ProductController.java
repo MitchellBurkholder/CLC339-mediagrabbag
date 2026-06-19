@@ -1,16 +1,12 @@
 package com.grabbag.controller;
 
-import com.grabbag.business.ProductInterface;
 import com.grabbag.data.ProductDataInterface;
 import com.grabbag.model.products.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 @Controller
@@ -46,17 +42,59 @@ public class ProductController
             model.addAttribute("title", "Add Product Form");
             return "AddProduct";
         }
-        productService.create(productModel);
+
         switch(productModel.getType())
         {
             case Book:
+                productService.create(productModel);
                 return allProducts(model);
             case MovieOrShow:
-                return "redirect:/";
+                productService.create(productModel);
+                return allProducts(model);
             case VideoGame:
-                return "redirect:/Placeholder";
+                productService.create(productModel);
+                return allProducts(model);
             default:
-                return "redirect:/";
+                return allProducts(model);
         }
+    }
+
+    @GetMapping("/editProduct/{id}")
+    public String editProductForm(@PathVariable int id, Model model)
+    {
+        ProductModel product = productService.findById(id);
+
+        model.addAttribute("title", "Edit Product Form");
+        model.addAttribute("productModel", product);
+
+        return "EditProduct";
+    }
+
+    @PostMapping("/doUpdateProduct")
+    public String updateProduct(
+        @Valid @ModelAttribute("productModel") ProductModel productModel,
+        BindingResult bindingResult,
+        Model model)
+    {
+        if(bindingResult.hasErrors())
+        {
+            model.addAttribute("title", "Edit Product Form");
+            return "EditProduct";
+        }
+        productService.update(productModel);
+        return "redirect:/product/allProducts";
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable int id)
+    {
+        ProductModel product = productService.findById(id);
+
+        if(product != null)
+        {
+            productService.delete(product);
+        }
+
+        return "redirect:/product/allProducts";
     }
 }
