@@ -92,9 +92,8 @@ public class ProductDataService implements ProductDataInterface
 
     @Override
     public void delete(ProductModel productModel) {
-    	String sql = """
-    				DELETE FROM productinfo WHERE ID = ?
-    			""";
+    	
+    	String sql = "DELETE FROM productinfo WHERE ID = ?";
     	
     	jdbcTemplate.update(sql, productModel.getId());
     	
