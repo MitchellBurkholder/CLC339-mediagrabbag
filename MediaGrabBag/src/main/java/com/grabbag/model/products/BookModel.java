@@ -17,8 +17,6 @@ public class BookModel extends SmallModel
         this.author = author;
     }
 
-    public BookModel(){}
-
     public String getAuthor() {
         return author;
     }

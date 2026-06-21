@@ -14,11 +14,4 @@ public class HomeController
     {
         return "redirect:/product/allProducts";
     }
-
-    //needed for placeholder page to appear 
-    @GetMapping("/placeholder")
-    public String showPlaceholder()
-    {
-        return "Placeholder";
-    }
 }
