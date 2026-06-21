@@ -27,8 +27,8 @@
                 <td>
                     <div class="hover-text"
                          title="Book Only">
+                        Author
                     </div>
-                    Author
                 </td>
                 <td><input type="text" th:field="*{author}"></td>
                 <td><h5 style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">
@@ -38,8 +38,8 @@
                 <td>
                     <div class="hover-text"
                          title="Movie or TV Show Only">
+                        Duration in Hours
                     </div>
-                    Duration in Hours
                 </td>
                 <td><input type="number" th:field="*{durationInHours}"></td>
                 <td><h5 style="color:red" th:if="${#fields.hasErrors('durationInHours')}"
@@ -50,8 +50,8 @@
                 <td>
                     <div class="hover-text"
                          title="Video Game Only">
+                        Amount of Players
                     </div>
-                    Amount of Players
                 </td>
                 <td><input type="text" th:field="*{numPlayers}"></td>
                 <td><h5 style="color:red" th:if="${#fields.hasErrors('numPlayers')}" th:errors="*{numPlayers}">
@@ -61,8 +61,8 @@
                 <td>
                     <div class="hover-text"
                          title="Video Game Only">
+                        Required Equipment
                     </div>
-                    Required Equipment
                 </td>
                 <td><input type="text" th:field="*{requiredEquipment}"></td>
                 <td><h5 style="color:red" th:if="${#fields.hasErrors('requiredEquipment')}"

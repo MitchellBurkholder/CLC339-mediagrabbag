@@ -10,48 +10,48 @@ public class ProductModel
 {
     //Can be null; just assigned after product is created
     @Id
-    int id;
+    public int id;
 
     @NotNull(message="Type is required field")
     @Column("TYPE")
-    ProductType type;
+    public ProductType type;
 
     @NotNull(message="Title is required field")
     @Column("TITLE")
-    String title;
+    public String title;
 
     @Size(min=1, max=64, message="Author's full name must be between 1 and 64 characters")
     @Column("AUTHOR")
-    String author;
+    public String author;
 
     @Column("DURATION")
-    int durationInHours;
+    public int durationInHours;
 
     @Column("NUM_PLAYERS")
-    String numPlayers;
+    public String numPlayers;
 
     @Column("REQUIRED_EQUIPMENT")
-    String requiredEquipment;
+    public String requiredEquipment;
 
     @NotNull(message="Age Rating is required field")
     @Size(min=1, max=7, message="Not Rated can be abbrieviated to 'NR'")
     @Column("AGE_RATING")
-    String ageRating;
+    public String ageRating;
 
     @NotNull(message="Genre is required field")
     @Size(min=1, max=32, message="Please put the main genre")
     @Column("GENRE")
-    String genre;
+    public String genre;
 
     @NotNull(message="Date is required field")
     @Size(min=4, max=13, message="Minimum requirement is the year")
     @Column("DATE")
-    String date;
+    public String date;
 
     @NotNull(message="Publisher or Studio is required field")
     @Size(min=1, max=32, message="Name of publisher or studio must be less than 32 characters")
     @Column("PUBLISHER_OR_STUDIO")
-    String publisherOrStudio;
+    public String publisherOrStudio;
     public ProductModel() {}
 
     public ProductModel(int id, String type, String title, @Nullable String author, int duration, @Nullable String numPlayers, @Nullable String requiredEquipment, String ageRating, String genre, String date, String publisherOrStudio) {
@@ -71,6 +71,8 @@ public class ProductModel
     public ProductType getType() {
         return type;
     }
+
+    public String getTypeString(){return type.toString();}
 
     public void setType(ProductType type) {
         this.type = type;

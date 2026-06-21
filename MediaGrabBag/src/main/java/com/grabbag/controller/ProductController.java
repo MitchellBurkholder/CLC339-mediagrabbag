@@ -1,7 +1,11 @@
 package com.grabbag.controller;
 
 import com.grabbag.data.ProductDataInterface;
+import com.grabbag.data.ProductMapper;
+import com.grabbag.model.products.BookModel;
+import com.grabbag.model.products.MovieAndShowModel;
 import com.grabbag.model.products.ProductModel;
+import com.grabbag.model.products.VideoGameModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,18 +13,67 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController
 {
     @Autowired
     ProductDataInterface productService;
+    private ProductMapper productMapper = new ProductMapper();
 
     @GetMapping("/allProducts")
     public String allProducts(Model model)
     {
         model.addAttribute("products", productService.findAll());
         return "Products";
+    }
+
+    @GetMapping("/allBooks")
+    public String allBooks(Model model)
+    {
+        List<ProductModel> products = productService.findAll();
+        ArrayList<BookModel> books = new ArrayList<>();
+
+        for (ProductModel product : products)
+        {
+            books.add(productMapper.productToBook(product));
+        }
+
+        model.addAttribute("books", books);
+        return "Books";
+    }
+
+    @GetMapping("/allMoviesOrShows")
+    public String allMoviesOrShows(Model model)
+    {
+        List<ProductModel> products = productService.findAll();
+        ArrayList<MovieAndShowModel> moviesAndShows = new ArrayList<>();
+
+        for (ProductModel product : products)
+        {
+            moviesAndShows.add(productMapper.productToMovieOrShow(product));
+        }
+
+        model.addAttribute("moviesAndShows", moviesAndShows);
+        return "MoviesAndShows";
+    }
+
+    @GetMapping("/allVideoGames")
+    public String allVideoGames(Model model)
+    {
+        List<ProductModel> products = productService.findAll();
+        ArrayList<VideoGameModel> videoGames = new ArrayList<>();
+
+        for (ProductModel product : products)
+        {
+            videoGames.add(productMapper.productToVideoGame(product));
+        }
+
+        model.addAttribute("videoGames", videoGames);
+        return "VideoGames";
     }
 
     @GetMapping("/addProduct")
@@ -42,21 +95,8 @@ public class ProductController
             model.addAttribute("title", "Add Product Form");
             return "AddProduct";
         }
-
-        switch(productModel.getType())
-        {
-            case Book:
-                productService.create(productModel);
-                return allProducts(model);
-            case MovieOrShow:
-                productService.create(productModel);
-                return allProducts(model);
-            case VideoGame:
-                productService.create(productModel);
-                return allProducts(model);
-            default:
-                return allProducts(model);
-        }
+        productService.create(productModel);
+        return allProducts(model);
     }
 
     @GetMapping("/editProduct/{id}")
@@ -82,7 +122,7 @@ public class ProductController
             return "EditProduct";
         }
         productService.update(productModel);
-        return "redirect:/product/allProducts";
+        return allProducts(model);
     }
 
     @GetMapping("/deleteProduct/{id}")

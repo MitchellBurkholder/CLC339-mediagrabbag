@@ -70,7 +70,7 @@ public class ProductDataService implements ProductDataInterface
         """
         INSERT INTO productinfo
         (TYPE, TITLE, AUTHOR, DURATION, NUM_PLAYERS, REQUIRED_EQUIPMENT, AGE_RATING, GENRE, DATE, PUBLISHER_OR_STUDIO)
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
         return jdbcTemplate.update(sql,
                 product.getType().toString(),
@@ -90,23 +90,25 @@ public class ProductDataService implements ProductDataInterface
     public int update(ProductModel productModel) {
     	
     	String sql =
-    	        """
-    	        UPDATE productinfo SET TYPE = ?, TITLE = ?, AUTHOR = ?, DURATION = ?, NUM_PLAYERS = ?, REQUIRED_EQUIPMENT = ?, AGE_RATING = ?, GENRE = ?, DATE = ?, PUBLISHER_OR_STUDIO = ?
-    	        WHERE ID = ?
-    	        """;
-    	        return jdbcTemplate.update(sql,
-    	        		productModel.getId(),
-    	                productModel.getType().toString(),
-    	                productModel.getTitle(),
-                        productModel.getAuthor(),
-                        productModel.getDurationInHours(),
-                        productModel.getNumPlayers(),
-                        productModel.getRequiredEquipment(),
-    	                productModel.getAgeRating(),
-    	                productModel.getGenre(),
-    	                productModel.getDate(),
-    	                productModel.getPublisherOrStudio()
-    	        );
+                """
+                UPDATE productinfo SET TYPE = ?, TITLE = ?, AUTHOR = ?, DURATION = ?, NUM_PLAYERS = ?, REQUIRED_EQUIPMENT = ?, AGE_RATING = ?, GENRE = ?, `DATE` = ?, PUBLISHER_OR_STUDIO = ?
+                WHERE ID = ?
+                """;
+        jdbcTemplate.update(sql,
+                productModel.getId(),
+                productModel.getType().toString(),
+                productModel.getTitle(),
+                productModel.getAuthor(),
+                productModel.getDurationInHours(),
+                productModel.getNumPlayers(),
+                productModel.getRequiredEquipment(),
+                productModel.getAgeRating(),
+                productModel.getGenre(),
+                productModel.getDate(),
+                productModel.getPublisherOrStudio()
+        );
+
+        return -1;
     }
 
     @Override
