@@ -1,25 +1,21 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<body>
 		<div th:fragment="header">
-			<nav th:fragment="navbar">
+			<nav class="navbar" th:fragment="navbar">
 				<div class="container-fluid">
-					<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-						<ul>
-							<div class="left">
-								<li><a class="nav-brand" th:href="@{/}">MediaGrabBag</a></li>
-								<div class="nav-admin">
-									<li><a th:href="@{/product/addProduct}">Add Product</a></li>
-								</div>
-							</div>
-							<div class="nav-product">
-								<li><a th:href="@{/placeholder}">BOOKS</a></li>
-								<li><a th:href="@{/placeholder}">TV/MOVIES</a></li>
-								<li><a th:href="@{/placeholder}">VIDEO GAMES</a></li>
-							</div>
-							<div class="nav-login">
-								<li><a th:href="@{/login/}">Login</a></li>
-								<li><a th:href="@{/register/}">Register</a></li>
-							</div>
+					<div class="navbar-header">
+						<a class="navbar-brand" th:href="@{/}">MediaGrabBag</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a th:href="@{/product/addProduct}">Add Product</a></li>
+							<li><a th:href="@{/placeholder}">BOOKS</a></li>
+							<li><a th:href="@{/placeholder}">TV/MOVIES</a></li>
+							<li><a th:href="@{/placeholder}">VIDEO GAMES</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a th:href="@{/login}">Login</a></li>
+							<li><a th:href="@{/register/}">Register</a></li>
 						</ul>
 					</div>
 				</div>
@@ -27,7 +23,7 @@
 			<h2 th:text="${title}">Default Message Text</h2><br/>
 		</div>
 		<div th:fragment="footer">
-			<!--This is need for some reason-->
 		</div>
 	</body>
 </html>
+

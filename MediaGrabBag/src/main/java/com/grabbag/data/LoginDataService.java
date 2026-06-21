@@ -6,8 +6,12 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
+
+import com.grabbag.data.entity.LoginInfoEntity;
 import com.grabbag.model.LoginModel;
+import com.grabbag.model.products.ProductModel;
 
 @Service
 public class LoginDataService implements LoginDataInterface<LoginModel>{
@@ -81,6 +85,16 @@ public class LoginDataService implements LoginDataInterface<LoginModel>{
 	public boolean delete(LoginModel login) {
 		// for now unimplemented, may be used or removed in later milestones
 		return false;
+	}
+
+	@Override
+	public LoginInfoEntity findByUsername(String username) {
+		
+		String sql = "SELECT * FROM logininfo WHERE USERNAME = ?";
+		SqlRowSet srs = jdbcTemplate.queryForRowSet(sql, username);
+		srs.next();
+
+		return new LoginInfoEntity(srs.getLong("ID"), srs.getString("USERNAME"), srs.getString("PASSWORD"));
 	}
 	
 }

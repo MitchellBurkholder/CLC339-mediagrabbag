@@ -1,6 +1,7 @@
 package com.grabbag;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,12 +15,14 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.grabbag.business.SecurityCheck;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 		
 	@Autowired
-	UserBusinessService service;
+	SecurityCheck service;
 		
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -27,17 +30,17 @@ public class SecurityConfig {
 		            .csrf(csrf -> csrf.disable())
 		            // Configure authorization rules
 		            .authorizeHttpRequests(authorize -> authorize
-		                .requestMatchers("/", "/images/**").permitAll()
+		            	.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+		                .requestMatchers("/", "/login", "/register/").permitAll()
 		                .anyRequest().authenticated()
 		            )
-		            .httpBasic(basic -> basic.realmName("Service API"))
 		            // Configure login form
 		            .formLogin(form -> form
 		                .loginPage("/login")
 		                .usernameParameter("username")
 		                .passwordParameter("password")
 		                .permitAll()
-		                .defaultSuccessUrl("/orders/display", true)
+		                .defaultSuccessUrl("/", true)
 		            )
 		            // Configure logout
 		            .logout(logout -> logout
@@ -45,7 +48,7 @@ public class SecurityConfig {
 		                .invalidateHttpSession(true)
 		                .clearAuthentication(true)
 		                .permitAll()
-		                .logoutSuccessUrl("/")
+		                .logoutSuccessUrl("/login")
 		            );
 
 		        return http.build();

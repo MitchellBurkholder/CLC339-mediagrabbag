@@ -1,6 +1,6 @@
 package com.grabbag.business;
 
 public interface LoginInterface {
-	public boolean authenticate(String username, String password);
+	//public boolean authenticate(String username, String password);
 	public void create(String username, String password);
 }
