@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 15, 2026 at 01:52 AM
+-- Generation Time: Jun 21, 2026 at 05:14 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -51,10 +51,10 @@ CREATE TABLE `productinfo` (
   `ID` int(11) NOT NULL,
   `TYPE` varchar(15) NOT NULL,
   `TITLE` varchar(200) NOT NULL,
-  `AUTHOR` varchar(50),
-  `DURATION` int(7),
-  `NUM_PLAYERS` varchar(15),
-  `REQUIRED_EQUIPMENT` varchar(30),
+  `AUTHOR` varchar(50) NOT NULL,
+  `DURATION` int(10) NOT NULL,
+  `NUM_PLAYERS` varchar(20) NOT NULL,
+  `REQUIRED_EQUIPMENT` varchar(50) NOT NULL,
   `AGE_RATING` varchar(7) NOT NULL,
   `GENRE` varchar(32) NOT NULL,
   `DATE` varchar(13) NOT NULL,
@@ -66,8 +66,9 @@ CREATE TABLE `productinfo` (
 --
 
 INSERT INTO `productinfo` (`ID`, `TYPE`, `TITLE`, `AUTHOR`, `DURATION`, `NUM_PLAYERS`, `REQUIRED_EQUIPMENT`, `AGE_RATING`, `GENRE`, `DATE`, `PUBLISHER_OR_STUDIO`) VALUES
-(1, 'Book', 'Murder on the Orient Express', '', 0, '', '', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club'),
-(2, 'MovieOrShow', 'Project Hail Mary', '', 0, '', '', 'PG-13', 'Sci-Fi', '03-20-2026', 'Amazon MGM');
+(1, 'Book', 'Murder on the Orient Express', 'Agatha Christie', 0, '', '', '12+', 'Mystery', '01-01-1934', 'Collins Crime Club'),
+(5, 'Book', 'test', 'test', 0, '', '', 'test', 'test', 'test', 'test'),
+(6, 'MovieOrShow', 'Project Hail Mary', '', 3, '', '', 'PG-13', 'Sci-Fi', '03/10/26', 'Amazon MGM');
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,7 @@ ALTER TABLE `logininfo`
 -- AUTO_INCREMENT for table `productinfo`
 --
 ALTER TABLE `productinfo`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `registerinfo`
