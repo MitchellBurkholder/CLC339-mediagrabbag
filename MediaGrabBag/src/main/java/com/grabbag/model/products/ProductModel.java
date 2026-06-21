@@ -20,7 +20,6 @@ public class ProductModel
     @Column("TITLE")
     public String title;
 
-    @Size(min=1, max=64, message="Author's full name must be between 1 and 64 characters")
     @Column("AUTHOR")
     public String author;
 

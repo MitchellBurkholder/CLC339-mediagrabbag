@@ -18,13 +18,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="book : ${books}">
-            <td th:text="${books.title}"> | </td>
-            <td th:text="${books.author}"> | </td>
-            <td th:text="${books.ageRating}"> | </td>
-            <td th:text="${books.genre}"> | </td>
-            <td th:text="${books.date}"> | </td>
-            <td th:text="${books.publisherOrStudio}"></td>
+        <tr th:each="book : ${Books}">
+            <td th:text="${book.title}"> | </td>
+            <td th:text="${book.author}"> | </td>
+            <td th:text="${book.ageRating}"> | </td>
+            <td th:text="${book.genre}"> | </td>
+            <td th:text="${book.date}"> | </td>
+            <td th:text="${book.publisherOrStudio}"></td>
         </tr>
         </tbody>
     </table>

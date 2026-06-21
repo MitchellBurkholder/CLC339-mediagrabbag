@@ -39,10 +39,13 @@ public class ProductController
 
         for (ProductModel product : products)
         {
-            books.add(productMapper.productToBook(product));
+            if(product.getTypeString().equals("Book"))
+            {
+                books.add(productMapper.productToBook(product));
+            }
         }
 
-        model.addAttribute("books", books);
+        model.addAttribute("Books", books);
         return "Books";
     }
 
@@ -54,10 +57,13 @@ public class ProductController
 
         for (ProductModel product : products)
         {
-            moviesAndShows.add(productMapper.productToMovieOrShow(product));
+            if(product.getTypeString().equals("MovieOrShow"))
+            {
+                moviesAndShows.add(productMapper.productToMovieOrShow(product));
+            }
         }
 
-        model.addAttribute("moviesAndShows", moviesAndShows);
+        model.addAttribute("MoviesAndShows", moviesAndShows);
         return "MoviesAndShows";
     }
 
@@ -69,10 +75,13 @@ public class ProductController
 
         for (ProductModel product : products)
         {
-            videoGames.add(productMapper.productToVideoGame(product));
+            if(product.getTypeString().equals("VideoGame"))
+            {
+                videoGames.add(productMapper.productToVideoGame(product));
+            }
         }
 
-        model.addAttribute("videoGames", videoGames);
+        model.addAttribute("VideoGames", videoGames);
         return "VideoGames";
     }
 
