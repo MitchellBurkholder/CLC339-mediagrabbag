@@ -7,6 +7,7 @@ import com.grabbag.model.products.MovieAndShowModel;
 import com.grabbag.model.products.ProductModel;
 import com.grabbag.model.products.VideoGameModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ public class ProductController
 {
     @Autowired
     ProductDataInterface productService;
+
     private ProductMapper productMapper = new ProductMapper();
 
     @GetMapping("/allProducts")
@@ -104,6 +106,7 @@ public class ProductController
             model.addAttribute("title", "Add Product Form");
             return "AddProduct";
         }
+
         productService.create(productModel);
         return allProducts(model);
     }
@@ -121,15 +124,16 @@ public class ProductController
 
     @PostMapping("/doUpdateProduct")
     public String updateProduct(
-        @Valid @ModelAttribute("productModel") ProductModel productModel,
-        BindingResult bindingResult,
-        Model model)
+            @Valid @ModelAttribute("productModel") ProductModel productModel,
+            BindingResult bindingResult,
+            Model model)
     {
         if(bindingResult.hasErrors())
         {
             model.addAttribute("title", "Edit Product Form");
             return "EditProduct";
         }
+
         productService.update(productModel);
         return allProducts(model);
     }
@@ -145,5 +149,40 @@ public class ProductController
         }
 
         return "redirect:/product/allProducts";
+    }
+
+    // REST API: return all products as JSON
+    @GetMapping(value = "/api/allProducts", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<ProductModel> getAllProductsAsJson()
+    {
+        return productService.findAll();
+    }
+
+    // REST API: return desired products by type
+    @GetMapping(value = "/api/type/{type}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<ProductModel> getProductsByType(@PathVariable String type)
+    {
+        List<ProductModel> products = productService.findAll();
+        List<ProductModel> desiredProducts = new ArrayList<>();
+
+        for(ProductModel product : products)
+        {
+            if(product.getTypeString().equalsIgnoreCase(type))
+            {
+                desiredProducts.add(product);
+            }
+        }
+
+        return desiredProducts;
+    }
+
+    // REST API: return one product by id
+    @GetMapping(value = "/api/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ProductModel getProductById(@PathVariable int id)
+    {
+        return productService.findById(id);
     }
 }
