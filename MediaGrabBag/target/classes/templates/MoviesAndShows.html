@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate" lang="en">
+<head>
+    <title>MoviesAndShows</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Our Movies and TV Shows</h1>
+    <table class="display-products">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Rating</th>
+            <th>Genre</th>
+            <th>Date</th>
+            <th>Publisher/Studio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mas : ${MoviesAndShows}">
+            <td th:text="${mas.title}"> | </td>
+            <td th:text="${mas.durationInHours}"> | </td>
+            <td th:text="${mas.ageRating}"> | </td>
+            <td th:text="${mas.genre}"> | </td>
+            <td th:text="${mas.date}"> | </td>
+            <td th:text="${mas.publisherOrStudio}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,7 +1,5 @@
 package com.grabbag.data;
 
-import java.util.List;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.grabbag.data.entity.LoginInfoEntity;
 import com.grabbag.model.LoginModel;
-import com.grabbag.model.products.ProductModel;
 
 @Service
 public class LoginDataService implements LoginDataInterface<LoginModel>{
@@ -22,40 +19,6 @@ public class LoginDataService implements LoginDataInterface<LoginModel>{
 	public LoginDataService(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-
-	@Override
-	public List<LoginModel> findAll() {
-		
-		//will implement later
-		return null;
-	}
-
-	@Override
-	public LoginModel findById(int id) {
-		
-		// will implement later
-		
-		return null;
-	}
-	
-	
-	
-	public boolean CheckCredentials(String username, String password) {
-		
-		// query made, will change later
-		String sql = "SELECT COUNT(1) FROM logininfo WHERE USERNAME = ? AND PASSWORD = ?";
-		
-		//increments the count if the password & username is in the database
-		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, username, password);
-		
-		if(count != null && count > 0) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	
 
 	@Override
 	public boolean create(LoginModel login) {
@@ -75,17 +38,6 @@ public class LoginDataService implements LoginDataInterface<LoginModel>{
 		return true;
 	}
 
-	@Override
-	public boolean update(LoginModel login) {
-		// for now unimplemented, may be used or removed in later milestones
-		return false;
-	}
-
-	@Override
-	public boolean delete(LoginModel login) {
-		// for now unimplemented, may be used or removed in later milestones
-		return false;
-	}
 
 	@Override
 	public LoginInfoEntity findByUsername(String username) {

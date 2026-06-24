@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate" lang="en">
+<head>
+    <title>VideoGames</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Our Video Games</h1>
+    <table class="display-products">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Number of Players</th>
+            <th>Required Equipment</th>
+            <th>Rating</th>
+            <th>Genre</th>
+            <th>Date</th>
+            <th>Publisher/Studio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game : ${VideoGames}">
+            <td th:text="${game.title}"> | </td>
+            <td th:text="${game.numPlayers}"> | </td>
+            <td th:text="${game.requiredEquipment}"> | </td>
+            <td th:text="${game.ageRating}"> | </td>
+            <td th:text="${game.genre}"> | </td>
+            <td th:text="${game.date}"> | </td>
+            <td th:text="${game.publisherOrStudio}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

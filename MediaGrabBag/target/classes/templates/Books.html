@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate" lang="en">
+<head>
+    <title>Books</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Our Books</h1>
+    <table class="display-products">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Genre</th>
+            <th>Date</th>
+            <th>Publisher/Studio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${Books}">
+            <td th:text="${book.title}"> | </td>
+            <td th:text="${book.author}"> | </td>
+            <td th:text="${book.ageRating}"> | </td>
+            <td th:text="${book.genre}"> | </td>
+            <td th:text="${book.date}"> | </td>
+            <td th:text="${book.publisherOrStudio}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

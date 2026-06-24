@@ -1,7 +1,7 @@
 package com.grabbag.business;
 
 import java.util.List;
-import com.grabbag.model.ProductModel;
+import com.grabbag.model.products.*;
 
 public interface ProductBusinessServiceInterface {
     List<ProductModel> getProducts();
