@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"com.gcu"},{"l":"com.grabbag"},{"l":"com.grabbag.business"},{"l":"com.grabbag.controller"},{"l":"com.grabbag.data"},{"l":"com.grabbag.data.entity"},{"l":"com.grabbag.model"},{"l":"com.grabbag.model.products"}];updateSearchResults();
