@@ -12,6 +12,6 @@ public class HomeController
     @GetMapping("/")
     public String showHome()
     {
-        return "redirect:/product/allProducts";
+        return "Home";
     }
 }
